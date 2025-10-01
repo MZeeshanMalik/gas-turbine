@@ -1,0 +1,196 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 217 63% 9%;
+    --foreground: 208 89% 92%;
+
+    --card: 220 58% 12%;
+    --card-foreground: 208 89% 92%;
+
+    --popover: 220 58% 12%;
+    --popover-foreground: 208 89% 92%;
+
+    --primary: 199 94% 63%;
+    --primary-foreground: 218 63% 11%;
+
+    --secondary: 166 72% 47%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 219 56% 16%;
+    --muted-foreground: 210 44% 72%;
+
+    --accent: 35 98% 61%;
+    --accent-foreground: 222 61% 12%;
+
+    --destructive: 3 85% 63%;
+    --destructive-foreground: 210 40% 98%;
+
+    --warning: 35 98% 61%;
+    --warning-foreground: 222 61% 12%;
+
+    --success: 118 65% 50%;
+    --success-foreground: 210 40% 98%;
+
+    --border: 217 42% 24%;
+    --input: 217 42% 24%;
+    --ring: 199 94% 63%;
+
+    --radius: 0.75rem;
+
+    --grid-line: 219 50% 22%;
+    --grid-cross: 219 44% 18%;
+    --glow-primary: 199 94% 62%;
+    --glow-secondary: 166 72% 47%;
+
+    --subsystem-fan: 196 91% 63%;
+    --subsystem-compressor: 208 88% 60%;
+    --subsystem-combustor: 17 88% 58%;
+    --subsystem-turbine: 40 98% 58%;
+    --subsystem-nozzle: 282 78% 68%;
+    --subsystem-intake: 162 71% 52%;
+    --subsystem-exhaust: 326 74% 66%;
+    --subsystem-auxiliaries: 118 65% 50%;
+    --subsystem-connection: 206 44% 58%;
+  }
+
+  .dark {
+    --background: 213 61% 6%;
+    --foreground: 210 40% 94%;
+
+    --card: 217 60% 9%;
+    --card-foreground: 210 40% 94%;
+
+    --popover: 217 60% 9%;
+    --popover-foreground: 210 40% 94%;
+
+    --primary: 199 94% 69%;
+    --primary-foreground: 213 61% 6%;
+
+    --secondary: 161 73% 50%;
+    --secondary-foreground: 213 61% 6%;
+
+    --muted: 219 60% 14%;
+    --muted-foreground: 210 40% 82%;
+
+    --accent: 35 98% 65%;
+    --accent-foreground: 222 61% 12%;
+
+    --destructive: 3 85% 63%;
+    --destructive-foreground: 213 61% 6%;
+
+    --warning: 35 98% 65%;
+    --warning-foreground: 213 61% 6%;
+
+    --success: 118 65% 50%;
+    --success-foreground: 213 61% 6%;
+
+    --border: 219 44% 20%;
+    --input: 219 44% 20%;
+    --ring: 199 94% 63%;
+
+    --grid-line: 219 50% 20%;
+    --grid-cross: 219 44% 16%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/0;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-image:
+      radial-gradient(
+        circle at 10% 20%,
+        hsla(var(--glow-primary) / 0.12),
+        transparent 55%
+      ),
+      radial-gradient(
+        circle at 90% 30%,
+        hsla(var(--glow-secondary) / 0.08),
+        transparent 60%
+      ),
+      linear-gradient(
+        90deg,
+        hsla(var(--grid-cross) / 0.35) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        180deg,
+        hsla(var(--grid-line) / 0.25) 1px,
+        transparent 1px
+      ),
+      linear-gradient(180deg, hsla(217 62% 7% / 1), hsla(217 62% 7% / 0.85));
+    background-size:
+      100% 100%,
+      100% 100%,
+      64px 64px,
+      64px 64px,
+      100% 100%;
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-tight text-foreground;
+  }
+
+  a {
+    @apply text-primary transition-colors;
+  }
+
+  a:hover {
+    @apply text-primary/80;
+  }
+
+  ::selection {
+    background: hsla(var(--primary) / 0.35);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background: linear-gradient(
+      145deg,
+      hsla(var(--card) / 0.82),
+      hsla(var(--card) / 0.65)
+    );
+    box-shadow:
+      0 24px 60px -30px rgba(8, 19, 36, 0.85),
+      inset 0 1px 0 hsla(var(--grid-line) / 0.65);
+    backdrop-filter: blur(18px);
+  }
+
+  .blueprint-grid {
+    background-image:
+      linear-gradient(
+        90deg,
+        hsla(var(--grid-cross) / 0.45) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        180deg,
+        hsla(var(--grid-line) / 0.35) 1px,
+        transparent 1px
+      );
+    background-size: 64px 64px;
+  }
+
+  .glow-ring {
+    box-shadow:
+      0 0 0 1px hsla(var(--ring) / 0.45),
+      0 0 28px hsla(var(--ring) / 0.3);
+  }
+}
